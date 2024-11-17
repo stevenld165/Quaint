@@ -49,18 +49,22 @@ const LineGraph = () => {
     if (selectedQuarter === "1") 
     {
       newLabels = ["Jan", "Feb", "Mar"];
+      newData = [20, 30, 40];
     } 
     else if (selectedQuarter === "2") 
     {
       newLabels = ["Apr", "May", "Jun"];
+      newData = [20, 30, 40];
     } 
     else if (selectedQuarter === "3") 
     {
       newLabels = ["Jul", "Aug", "Sep"];
+      newData = [20, 30, 40];
     } 
     else if (selectedQuarter === "4") 
     {
       newLabels = ["Oct", "Nov", "Dec"];
+      newData = [20, 30, 40];
     } 
     else 
      {
