@@ -43,22 +43,6 @@ export default function LoginScreen() {
           >
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
-
-          <Text style={styles.continueText}>Continue with</Text>
-          <View style={styles.socialButtons}>
-            <TouchableOpacity
-              style={styles.socialButton}
-              onPress={() => setShowForm(true)}
-              accessible={true}
-              accessibilityLabel="Login with Google"
-            />
-            <TouchableOpacity
-              style={styles.socialButton}
-              onPress={() => setShowForm(true)}
-              accessible={true}
-              accessibilityLabel="Login with Facebook"
-            />
-          </View>
         </View>
       </SafeAreaView>
     );

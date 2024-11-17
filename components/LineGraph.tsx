@@ -201,9 +201,9 @@ const LineGraph = () => {
     } else if (selectedType === "4") {
       if (monthU != 13 && monthData)
         newData = [
-          monthData[month].gas + monthData[month].water + monthData[month].electricity, 
-          monthData[month+1].gas + monthData[month+1].water + monthData[month+1].electricity, 
-          monthData[month+2].gas + monthData[month+2].water + monthData[month+2].electricity
+          monthData[monthU].gas + monthData[monthU].water + monthData[monthU].electricity, 
+          monthData[monthU+1].gas + monthData[monthU+1].water + monthData[monthU+1].electricity, 
+          monthData[monthU+2].gas + monthData[monthU+2].water + monthData[monthU+2].electricity
         ];
       else if (monthData) {
         const sumMonth = (month:number) => {

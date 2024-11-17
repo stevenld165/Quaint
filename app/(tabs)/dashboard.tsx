@@ -6,7 +6,7 @@ import {
   Dimensions,
   SafeAreaView,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import LineGraph from "@/components/LineGraph";
 import StatCard from "@/components/ScrollCard";
@@ -20,7 +20,6 @@ export default function HomeScreen() {
   const [monthData, setMonthData] = useState<{
     water: number; id: string; electricity: number; month: number; budget: number; gas: number;
 }[] | undefined >([])
-
 
   useEffect(() => {
     const fetchData = async () => {
