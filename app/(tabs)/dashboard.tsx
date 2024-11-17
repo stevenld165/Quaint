@@ -1,7 +1,12 @@
-import { ScrollView, StyleSheet, View, Text, Dimensions, SafeAreaView } from "react-native";
-import React, { useEffect, useState } from "react";
-//import LineGraph from "@/components/LineGraph";
-//import StatCard from "@/components/ScrollCard";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  SafeAreaView,
+} from "react-native";
+import React from "react";
 
 import LineGraph from "@/components/LineGraph";
 import StatCard from "@/components/ScrollCard";
@@ -38,10 +43,17 @@ export default function HomeScreen() {
   
 
   return (
-    <ScrollView contentContainerStyle={styles.contentContainer} style={styles.scrollView}>
+    <ScrollView
+      contentContainerStyle={styles.contentContainer}
+      style={styles.scrollView}
+    >
+      <View>
+        <Text style={styles.title}>Hey, John!</Text>
+      </View>
+
       <SafeAreaView>
-        <ScrollView 
-          horizontal 
+        <ScrollView
+          horizontal
           contentContainerStyle={styles.cardsContainer}
           showsHorizontalScrollIndicator={false}
         >
@@ -73,7 +85,6 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   scrollView: {
-    flex: 1, // Ensure it takes up the full screen
     backgroundColor: "#FFFFFF", // White background for the entire screen
   },
   contentContainer: {
@@ -83,8 +94,14 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     flexDirection: "row", // Arrange cards in a row
-    paddingVertical: 16,
+    paddingVertical: 6,
     gap: 8, // Add spacing between cards
   },
-  
+  title: {
+    fontSize: 34,
+    fontWeight: "bold",
+    textAlign: "left",
+    paddingLeft: 14,
+    color: "black", // Adjust text color as needed
+  },
 });

@@ -54,7 +54,7 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="index"
+          name="dashboard"
           options={{
             tabBarShowLabel: false,
             title: 'Home',

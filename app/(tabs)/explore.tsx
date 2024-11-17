@@ -14,7 +14,7 @@ export default function TabTwoScreen() {
           <BalanceCard
             summary={{
               RevenueSum: 27042,
-              ExpenseSum: -23384,
+              ExpenseSum: 23384,
               IncomeSum: 3658,
             }}
           />
