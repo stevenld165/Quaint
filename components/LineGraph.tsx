@@ -224,6 +224,7 @@ const LineGraph = () => {
           data={chartData}
           width={screenWidth - 80}
           height={220}
+          onDataPointClick={(data) => {console.log(data)}}
           chartConfig={{
             backgroundGradientFrom: "#FFFFFF",
             backgroundGradientTo: "#FFFFFF",
