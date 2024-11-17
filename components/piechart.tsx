@@ -8,16 +8,35 @@ export default class TestChart extends Component {
     const widthAndHeight = 250;
     const series = [123, 321, 123];
     const sliceColor = ['#004d40', '#1a237e', '#d2b48c']; // Dark green, dark blue, and tan
+    const labels = ['Water', 'Electricity', 'Gas']; // Updated labels for the legend
 
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <View style={styles.card}>
             <Text style={styles.title}>Monthly Summary</Text>
-            <PieChart widthAndHeight={widthAndHeight} series={series} sliceColor={sliceColor} />
+            <PieChart
+              widthAndHeight={widthAndHeight}
+              series={series}
+              sliceColor={sliceColor}
+            />
+            {/* Legend Section */}
+            <View style={styles.legendContainer}>
+              {labels.map((label, index) => (
+                <View key={index} style={styles.legendItem}>
+                  <View
+                    style={[
+                      styles.legendColorBox,
+                      { backgroundColor: sliceColor[index] },
+                    ]}
+                  />
+                  <Text style={styles.legendText}>{label}</Text>
+                </View>
+              ))}
+            </View>
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -46,6 +65,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    color: '#333',
+  },
+  legendContainer: {
+    marginTop: 20,
+    alignItems: 'flex-start',
+    width: '100%',
+  },
+  legendItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  legendColorBox: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+    borderRadius: 5, // Adds rounded corners to the color box
+  },
+  legendText: {
+    fontSize: 16,
     color: '#333',
   },
 });

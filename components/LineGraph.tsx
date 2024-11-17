@@ -108,7 +108,7 @@ const LineGraph = () => {
     datasets: [
       {
         data: [30, 40, 50], // Initial Y-axis data points
-        color: (opacity = 1) => `rgba(45, 110, 255, ${opacity})`,
+        color: (opacity = 1) => `rgba(197, 232, 204, ${opacity})`, // Change to green
         strokeWidth: 2,
       },
     ],
