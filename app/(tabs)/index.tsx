@@ -36,11 +36,6 @@ export default function HomeScreen() {
         </ScrollView>
       </SafeAreaView>
       <LineGraph />
-      <View style={styles.list}>
-        <Text style={styles.notes}>
-          May Notes: yada yada yada yada yada yadadfa
-        </Text>
-      </View>
     </ScrollView>
   );
 }

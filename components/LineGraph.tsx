@@ -9,7 +9,7 @@ const Inter = require('../assets/fonts/Inter/static/Inter_18pt-Medium.ttf');
 const InterBold = require('../assets/fonts/Inter/static/Inter_18pt-Bold.ttf');
 const InterRegular = require('../assets/fonts/Inter/static/Inter-Regular.ttf');
 
-import { getData } from "@/components/Database"
+import { getData, getMonthSentences } from "@/components/Database"
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -35,6 +35,11 @@ const LineGraph = () => {
     water: number; id: string; electricity: number; month: number; budget: number; gas: number;
 }[] | undefined >([])
 
+  const [monthSentences, setMonthSentences] = useState<{id: string; sentence: string}[] | undefined>([])
+
+  const [month, setMonth] = useState(0)
+  const [monthNum, setMonthNum] = useState(0)
+
   const [value1, setValue1] = useState<string | null>(null);
   const [value2, setValue2] = useState<string | null>(null);
   const [isFocus1, setIsFocus1] = useState(false);
@@ -48,7 +53,55 @@ const LineGraph = () => {
   fetchData()
   }, [])
 
-  console.log(monthData)
+  useEffect(() => {
+    const fetchData = async () => {
+      if (monthNum >= 0 && monthNum < 13) {
+        const retMonthSentences = await getMonthSentences(monthNum+1);
+        setMonthSentences(retMonthSentences)
+      } else {
+        setMonthSentences([])
+      }
+    }
+    fetchData()
+  }, [monthNum])
+
+  let sentenceComponentArray;
+  if (monthSentences)
+  {
+    sentenceComponentArray = monthSentences.map((sentence) => (<Text key={sentence.id}>• {sentence.sentence}{"\n"}</Text>));
+  }
+    
+  const numToMon = (num) => {
+    switch (num) {
+      case 0:
+        return "January";
+      case 1:
+        return "February";
+      case 2:
+        return "March";
+      case 3:
+        return "April";
+      case 4:
+        return "May";
+      case 5:
+        return "June";
+      case 6:
+        return "July";
+      case 7:
+        return "August";
+      case 8:
+        return "September";
+      case 9:
+        return "October";
+      case 10:
+        return "November";
+      case 11:
+        return "December";
+      default:
+        return "...";
+    }
+  }
+
   // State for dynamic chart data
   const [chartData, setChartData] = useState({
     labels: ["Apr", "May", "Jun"], // Initial X-axis labels
@@ -80,38 +133,39 @@ const LineGraph = () => {
   const updateChartData = (selectedQuarter: string | null, selectedType: string | null) => {
     let newLabels: string[] = [];
     let newData: number[] = [];
-    let month: number = 0;
+    
 
     // Example data logic based on dropdown selection
     if (selectedQuarter === "1") {
       newLabels = ["Jan", "Feb", "Mar"];
       newData = [20, 30, 40];
-      month = 0;
+      setMonth(0);
     } 
     else if (selectedQuarter === "2") 
     {
       newLabels = ["Apr", "May", "Jun"];
       newData = [20, 30, 40];
-      month = 3;
+      setMonth(3);
     } 
     else if (selectedQuarter === "3") 
     {
       newLabels = ["Jul", "Aug", "Sep"];
       newData = [20, 30, 40];
-      month = 6;
+      setMonth(6);
     } 
     else if (selectedQuarter === "4") 
     {
       newLabels = ["Oct", "Nov", "Dec"];
       newData = [20, 30, 40];
-      month = 9;
+      setMonth(9);
     } 
     else 
      {
       newLabels = ["Q 1", "Q 2", "Q 3", "Q 4"];
       newData = [30, 40, 50, 32];
-      month = 13;
+      setMonth(13);
     }
+    setMonthNum(month)
 
     if (selectedType === "1") {
       if (month != 13 && monthData)
@@ -243,7 +297,7 @@ const LineGraph = () => {
           data={chartData}
           width={screenWidth - 80}
           height={220}
-          onDataPointClick={(data) => {console.log(data)}}
+          onDataPointClick={(data) => {setMonthNum(month + data.index)}}
           chartConfig={{
             backgroundGradientFrom: "#FFFFFF",
             backgroundGradientTo: "#FFFFFF",
@@ -268,7 +322,8 @@ const LineGraph = () => {
       </View>
       <View style={styles.list}>
         <Text style={styles.notes}>
-          May Notes: yada yada yada yada yada yadadfa
+          {numToMon(monthNum)}'s Notes: {"\n"}
+          {sentenceComponentArray}
         </Text>
       </View>
     </View>
