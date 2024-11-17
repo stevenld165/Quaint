@@ -5,6 +5,7 @@ import React from "react";
 
 import LineGraph from "@/components/LineGraph";
 import StatCard from "@/components/ScrollCard";
+import TestChart from "@/components/piechart";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -38,6 +39,7 @@ export default function HomeScreen() {
         </ScrollView>
       </SafeAreaView>
       <LineGraph />
+      <TestChart />
     </ScrollView>
   );
 }

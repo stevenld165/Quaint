@@ -120,8 +120,8 @@ const LineGraph = () => {
         width: "20px",
         height: "20px",
         borderRadius: "50%",
-        backgroundColor: "#FFFFFF",
-        border: "2px solid #FFFFFF",
+        backgroundColor: "#014421",
+        border: "2px solid #014421",
         display: "inline-block",
         cursor: "pointer",
       }}
@@ -301,13 +301,13 @@ const LineGraph = () => {
           chartConfig={{
             backgroundGradientFrom: "#FFFFFF",
             backgroundGradientTo: "#FFFFFF",
-            color: (opacity = 1) => `rgba(45, 110, 255, ${opacity})`,
+            color: (opacity = 90) => `#014421`,
             labelColor: (opacity = 1) => `rgba(51, 51, 51, ${opacity})`,
-            fillShadowGradient: "rgba(45, 110, 255, 0.15)",
+            fillShadowGradient: "rgba(197, 232, 204, 0.15)",
             fillShadowGradientOpacity: 1,
             propsForDots: {
               r: "10",
-              strokeWidth: "2",
+              strokeWidth: "4",
               stroke: "#FFFFFF",
             },
             propsForLabels:{
@@ -321,8 +321,10 @@ const LineGraph = () => {
         />
       </View>
       <View style={styles.list}>
-        <Text style={styles.notes}>
+        <Text style={styles.notesTitle}>
           {numToMon(monthNum)}'s Notes: {"\n"}
+          </Text>
+        <Text style={styles.notes}>
           {sentenceComponentArray}
         </Text>
       </View>
@@ -349,13 +351,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: "gray",
-    padding: 16,
+    borderColor: "#E0E0E0",
+    padding: 14,
   },
   dropdown: {
-    height: 50,
+    height: 30,
     width: screenWidth / 2 - 30,
-    borderColor: "gray",
+    borderColor: "black",
     borderWidth: 0.5,
     borderRadius: 30,
     paddingHorizontal: 12,
@@ -373,8 +375,14 @@ const styles = StyleSheet.create({
     borderColor: "#E0E0E0",
     borderRadius: 8,
   },
+  notesTitle: {
+    fontWeight: "700",
+    fontSize: 15,
+    lineHeight: 21,
+    color: "black",
+  },
   notes: {
-    fontWeight: "600",
+    fontWeight: "400",
     fontSize: 15,
     lineHeight: 21,
     color: "black",
