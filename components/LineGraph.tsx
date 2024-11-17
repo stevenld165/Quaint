@@ -3,6 +3,11 @@ import { StyleSheet, View, Text, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { Dropdown } from "react-native-element-dropdown";
 import { AntDesign } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
+
+const Inter = require('../assets/fonts/Inter/static/Inter_18pt-Medium.ttf');
+const InterBold = require('../assets/fonts/Inter/static/Inter_18pt-Bold.ttf');
+const InterRegular = require('../assets/fonts/Inter/static/Inter-Regular.ttf');
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -40,35 +45,41 @@ const LineGraph = () => {
     ],
   });
 
+  const Dot = ({ onClick }) => (
+    <div
+      style={{
+        width: "20px",
+        height: "20px",
+        borderRadius: "50%",
+        backgroundColor: "#FFFFFF",
+        border: "2px solid #FFFFFF",
+        display: "inline-block",
+        cursor: "pointer",
+      }}
+      onClick={onClick}
+    />
+  );
+
   // Function to update chart data
   const updateChartData = (selectedQuarter: string | null, selectedType: string | null) => {
     let newLabels: string[] = [];
     let newData: number[] = [];
 
     // Example data logic based on dropdown selection
-    if (selectedQuarter === "1") 
-    {
+    if (selectedQuarter === "1") {
       newLabels = ["Jan", "Feb", "Mar"];
       newData = [20, 30, 40];
-    } 
-    else if (selectedQuarter === "2") 
-    {
+    } else if (selectedQuarter === "2") {
       newLabels = ["Apr", "May", "Jun"];
       newData = [20, 30, 40];
-    } 
-    else if (selectedQuarter === "3") 
-    {
+    } else if (selectedQuarter === "3") {
       newLabels = ["Jul", "Aug", "Sep"];
       newData = [20, 30, 40];
-    } 
-    else if (selectedQuarter === "4") 
-    {
+    } else if (selectedQuarter === "4") {
       newLabels = ["Oct", "Nov", "Dec"];
       newData = [20, 30, 40];
-    } 
-    else 
-     {
-      newLabels = ["Q 1", "Q 2", "Q 3", "Q 4"];
+    } else {
+      newLabels = ["Q1", "Q2", "Q3", "Q4"];
       newData = [30, 40, 50, 32];
     }
 
@@ -80,9 +91,7 @@ const LineGraph = () => {
       newData = [27, 38, 36];
     } else if (selectedType === "4") {
       newData = [32, 31, 35];
-    }
-    else if (selectedType === "5")
-    {
+    } else if (selectedType === "5") {
       newData = [30, 40, 50, 32];
     }
 
@@ -98,7 +107,7 @@ const LineGraph = () => {
       ],
     });
   };
-
+  
   return (
     <View style={styles.container}>
       {/* Dropdowns in a row */}
@@ -169,13 +178,24 @@ const LineGraph = () => {
             fillShadowGradient: "rgba(45, 110, 255, 0.15)",
             fillShadowGradientOpacity: 1,
             propsForDots: {
-              r: "6",
+              r: "10",
               strokeWidth: "2",
               stroke: "#FFFFFF",
             },
+            propsForLabels:{
+              fontFamily: InterRegular,
+            },
+          
           }}
+          withInnerLines={false}
+          withOuterLines={false}
           style={styles.chart}
         />
+      </View>
+      <View style={styles.list}>
+        <Text style={styles.notes}>
+          May Notes: yada yada yada yada yada yadadfa
+        </Text>
       </View>
     </View>
   );
@@ -202,35 +222,49 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "gray",
     padding: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 6,
-    elevation: 4,
   },
   dropdown: {
     height: 50,
     width: screenWidth / 2 - 30,
-    borderColor: "black",
+    borderColor: "gray",
     borderWidth: 0.5,
     borderRadius: 30,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
   },
   placeholderStyle: {
     fontSize: 16,
+    fontFamily: Inter,
+  },
+  list: {
+    width: screenWidth - 40,
+    padding: 16,
+    marginTop: 16,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+    borderRadius: 8,
+  },
+  notes: {
+    fontWeight: "600",
+    fontSize: 15,
+    lineHeight: 21,
+    color: "black",
   },
   selectedTextStyle: {
     fontSize: 16,
+    fontFamily: Inter,
   },
   title: {
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: InterBold,
     color: "#000",
     textAlign: "center",
     marginBottom: 16,
   },
   chart: {
     borderRadius: 8,
+    fontFamily: Inter,
   },
 });
 
