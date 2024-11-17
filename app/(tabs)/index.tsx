@@ -1,5 +1,8 @@
 import { ScrollView, StyleSheet, View, Text, Dimensions, SafeAreaView } from "react-native";
 import React from "react";
+//import LineGraph from "@/components/LineGraph";
+//import StatCard from "@/components/ScrollCard";
+
 import LineGraph from "@/components/LineGraph";
 import StatCard from "@/components/ScrollCard";
 
@@ -9,7 +12,6 @@ export default function HomeScreen() {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer} style={styles.scrollView}>
       <SafeAreaView>
-        {/* Horizontal ScrollView for cards */}
         <ScrollView 
           horizontal 
           contentContainerStyle={styles.cardsContainer}
@@ -55,19 +57,5 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     gap: 8, // Add spacing between cards
   },
-  list: {
-    width: screenWidth - 40,
-    padding: 16,
-    marginTop: 16,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#E0E0E0",
-    borderRadius: 8,
-  },
-  notes: {
-    fontWeight: "600",
-    fontSize: 15,
-    lineHeight: 21,
-    color: "black",
-  },
+  
 });

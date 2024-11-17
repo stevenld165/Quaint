@@ -8,6 +8,11 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+import { Icon } from 'react-native-elements';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWallet } from '@fortawesome/free-solid-svg-icons';
+
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -29,17 +34,31 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          tabBarShowLabel: false,
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Icon name="home" type='font-awesome' color={color} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color }) => <Icon name="exchange" type='font-awesome' color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="wallet"
+        options={{
+          title: 'wallet',
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faWallet} style={{color: color}}/>,
         }}
       />
     </Tabs>
+    
+
+
+    
   );
 }
