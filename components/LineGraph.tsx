@@ -174,7 +174,7 @@ const LineGraph = () => {
       datasets: [
         {
           data: newData,
-          color: (opacity = 1) => `rgba(45, 110, 255, ${opacity})`,
+          color: (opacity = 1) => `rgba(197, 232, 204, ${opacity})`,
           strokeWidth: 2,
         },
       ],
