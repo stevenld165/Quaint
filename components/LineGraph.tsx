@@ -323,7 +323,7 @@ const LineGraph = () => {
       </View>
       <View style={styles.list}>
         <Text style={styles.notesTitle}>
-          {numToMon(monthNum)}'s Notes: {"\n"}
+          {numToMon(monthNum) == '...'? "No notes" : numToMon(monthNum) + "'s Notes:" + "\n" }
           </Text>
         <Text style={styles.notes}>
           {sentenceComponentArray}
