@@ -7,7 +7,7 @@ export default class TestChart extends Component {
   render() {
     const widthAndHeight = 250;
     const series = [123, 321, 123];
-    const sliceColor = ['#004d40', '#1a237e', '#d2b48c']; // Dark green, dark blue, and tan
+    const sliceColor = ['#90e2a9', '#90c0e2', '#e2d890']; // Dark green, dark blue, and tan
 
     return (
       <ScrollView style={{ flex: 1 }}>

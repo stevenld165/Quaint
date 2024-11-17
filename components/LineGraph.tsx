@@ -133,43 +133,44 @@ const LineGraph = () => {
   const updateChartData = (selectedQuarter: string | null, selectedType: string | null) => {
     let newLabels: string[] = [];
     let newData: number[] = [];
-    
+    let monthU: number = 0;
 
     // Example data logic based on dropdown selection
     if (selectedQuarter === "1") {
       newLabels = ["Jan", "Feb", "Mar"];
       newData = [20, 30, 40];
-      setMonth(0);
+      monthU = 0;
     } 
     else if (selectedQuarter === "2") 
     {
       newLabels = ["Apr", "May", "Jun"];
       newData = [20, 30, 40];
-      setMonth(3);
+      monthU = 3;
     } 
     else if (selectedQuarter === "3") 
     {
       newLabels = ["Jul", "Aug", "Sep"];
       newData = [20, 30, 40];
-      setMonth(6);
+      monthU = 6;
     } 
     else if (selectedQuarter === "4") 
     {
       newLabels = ["Oct", "Nov", "Dec"];
       newData = [20, 30, 40];
-      setMonth(9);
+      monthU = 9;
     } 
     else 
      {
       newLabels = ["Q 1", "Q 2", "Q 3", "Q 4"];
       newData = [30, 40, 50, 32];
-      setMonth(13);
+      monthU = 13;
     }
-    setMonthNum(month)
+    setMonthNum(monthU);
+    setMonth(monthU);
 
     if (selectedType === "1") {
-      if (month != 13 && monthData)
-        newData = [monthData[month].water, monthData[month+1].water, monthData[month+2].water];
+      if (monthU != 13 && monthData)
+        newData = [monthData[monthU].water, monthData[monthU+1].water, monthData[monthU+2].water];
       else if (monthData)
         newData = [
           (monthData[0].water + monthData[1].water + monthData[2].water )/3,
@@ -178,8 +179,8 @@ const LineGraph = () => {
           (monthData[9].water + monthData[10].water + monthData[11].water )/3
         ];
     } else if (selectedType === "2") {
-      if (month != 13 && monthData)
-        newData = [monthData[month].electricity, monthData[month+1].electricity, monthData[month+2].electricity];
+      if (monthU != 13 && monthData)
+        newData = [monthData[monthU].electricity, monthData[monthU+1].electricity, monthData[monthU+2].electricity];
       else if (monthData)
         newData = [
           (monthData[0].electricity + monthData[1].electricity + monthData[2].electricity )/3,
@@ -188,8 +189,8 @@ const LineGraph = () => {
           (monthData[9].electricity + monthData[10].electricity + monthData[11].electricity )/3
         ];
     } else if (selectedType === "3") {
-      if (month != 13 && monthData)
-        newData = [monthData[month].gas, monthData[month+1].gas, monthData[month+2].gas];
+      if (monthU != 13 && monthData)
+        newData = [monthData[monthU].gas, monthData[monthU+1].gas, monthData[monthU+2].gas];
       else if (monthData)
         newData = [
           (monthData[0].gas + monthData[1].gas + monthData[2].gas )/3,
@@ -198,7 +199,7 @@ const LineGraph = () => {
           (monthData[9].gas + monthData[10].gas + monthData[11].gas )/3
         ];
     } else if (selectedType === "4") {
-      if (month != 13 && monthData)
+      if (monthU != 13 && monthData)
         newData = [
           monthData[month].gas + monthData[month].water + monthData[month].electricity, 
           monthData[month+1].gas + monthData[month+1].water + monthData[month+1].electricity, 
